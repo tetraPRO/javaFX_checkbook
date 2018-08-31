@@ -25,7 +25,7 @@ public class DBUtil {
         }
 
         try {
-            conn = DriverManager.getConnection(connStr, "tetrapro", "Lacrosse13!");
+            conn = DriverManager.getConnection(connStr, "tetrapro", "password_here");
         } catch (SQLException ex) {
             System.out.println("Connection Failed! Check output console " + ex);
             ex.printStackTrace();
