@@ -26,7 +26,7 @@ public class DBUtil {
         }
 
         try {
-<<<<<<< HEAD
+
             JPanel panel = new JPanel();
             JLabel label = new JLabel("Enter database password:");
             JPasswordField pass = new JPasswordField(10);
@@ -40,7 +40,8 @@ public class DBUtil {
             if(option == 0){//pressed OK
                 passwd = pass.getPassword();
             }else{
-                //close pane
+                //close program bc no password
+                System.exit(0);
             }
             conn = DriverManager.getConnection(connStr, "tetrapro", new String(passwd));
 
