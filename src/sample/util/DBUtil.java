@@ -26,6 +26,7 @@ public class DBUtil {
         }
 
         try {
+<<<<<<< HEAD
             JPanel panel = new JPanel();
             JLabel label = new JLabel("Enter database password:");
             JPasswordField pass = new JPasswordField(10);
@@ -38,8 +39,11 @@ public class DBUtil {
             char[] passwd = null;
             if(option == 0){//pressed OK
                 passwd = pass.getPassword();
+            }else{
+                //close pane
             }
             conn = DriverManager.getConnection(connStr, "tetrapro", new String(passwd));
+
         } catch (SQLException ex) {
             System.out.println("Connection Failed! Check output console " + ex);
             ex.printStackTrace();
