@@ -1,5 +1,6 @@
 package sample.util;
 
+import javax.swing.*;
 import java.sql.*;
 
 public class DBUtil {
@@ -25,7 +26,20 @@ public class DBUtil {
         }
 
         try {
-            conn = DriverManager.getConnection(connStr, "tetrapro", "Lacrosse13!");
+            JPanel panel = new JPanel();
+            JLabel label = new JLabel("Enter database password:");
+            JPasswordField pass = new JPasswordField(10);
+            panel.add(label);
+            panel.add(pass);
+            String[] options = new String[]{"OK", "Cancel"};
+            int option = JOptionPane.showOptionDialog(null, panel, "Database password",
+                    JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
+                    null, options, options[1]);
+            char[] passwd = null;
+            if(option == 0){//pressed OK
+                passwd = pass.getPassword();
+            }
+            conn = DriverManager.getConnection(connStr, "tetrapro", new String(passwd));
         } catch (SQLException ex) {
             System.out.println("Connection Failed! Check output console " + ex);
             ex.printStackTrace();
