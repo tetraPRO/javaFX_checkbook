@@ -8,30 +8,29 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Circle?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
+<GridPane alignment="center" hgap="10" prefHeight="115.0" prefWidth="500.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints />
+      <RowConstraints maxHeight="152.0" minHeight="119.0" prefHeight="141.0" />
    </rowConstraints>
    <children>
-      <AnchorPane fx:id="anchor" prefHeight="155.0" prefWidth="500.0">
+      <AnchorPane fx:id="anchor" prefHeight="95.0" prefWidth="503.0">
          <children>
-            <MenuBar fx:id="menuBar" prefHeight="29.0" prefWidth="500.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <MenuBar fx:id="menuBar" layoutY="-4.0" prefHeight="29.0" prefWidth="500.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <menus>
                   <Menu text="File">
                      <items>
-                        <MenuItem text="New" />
+                        <MenuItem onAction="#setBudget" text="Budget" />
                         <MenuItem text="Open" />
                         <MenuItem text="Save" />
                         <MenuItem text="Save As" />
@@ -41,16 +40,19 @@
                   </Menu>
                   <Menu text="Edit">
                      <items>
-                        <MenuItem text="Copy" />
-                        <MenuItem text="Cut" />
-                        <MenuItem text="Paste" />
+                        <MenuItem onAction="#addDeposit" text="Deposit" />
+                        <MenuItem text="Add Account" />
+                        <MenuItem text="Remove Account" />
+                        <MenuItem onAction="#initialBalance" text="Initial Balance" />
                      </items>
                   </Menu>
                   <Menu text="View">
                      <items>
-                        <MenuItem text="Daily" />
-                        <MenuItem text="Monthly" />
-                        <MenuItem text="Yearly" />
+                        <MenuItem onAction="#accountBalance" text="Account Balance" />
+                        <MenuItem text="Expenses" />
+                        <MenuItem text="Income Statement" />
+                        <MenuItem text="Balance Sheet" />
+                        <MenuItem text="Cash flow" />
                      </items>
                   </Menu>
                   <Menu text="Help">
@@ -63,8 +65,8 @@
                   </Menu>
                </menus>
             </MenuBar>
-            <DatePicker fx:id="date" layoutX="14.0" layoutY="36.0" prefHeight="26.0" prefWidth="144.0" promptText="Date" />
-            <ComboBox fx:id="from_account" layoutX="165.0" layoutY="36.0" prefHeight="26.0" prefWidth="144.0" promptText="From Account">
+            <DatePicker fx:id="date" layoutX="14.0" layoutY="42.0" prefHeight="26.0" prefWidth="144.0" promptText="Date" />
+            <ComboBox fx:id="from_account" layoutX="165.0" layoutY="43.0" prefHeight="26.0" prefWidth="144.0" promptText="From Account">
                <items>
                   <FXCollections fx:factory="observableArrayList">
                      <String fx:value="Bank" />
@@ -80,7 +82,7 @@
                   </FXCollections>
                </items>
             </ComboBox>
-            <ComboBox fx:id="to_account" layoutX="165.0" layoutY="75.0" prefHeight="26.0" prefWidth="144.0" promptText="To Account">
+            <ComboBox fx:id="to_account" layoutX="165.0" layoutY="79.0" prefHeight="26.0" prefWidth="144.0" promptText="To Account">
                <items>
                   <FXCollections fx:factory="observableArrayList">
                      <String fx:value="Housing" />
@@ -99,10 +101,11 @@
                   </FXCollections>
                </items>
             </ComboBox>
-            <TextField fx:id="amount" layoutX="317.0" layoutY="36.0" promptText="Amount" />
-            <TextField fx:id="notes" layoutX="317.0" layoutY="75.0" promptText="Notes" />
-            <Button fx:id="update" layoutX="231.0" layoutY="112.0" mnemonicParsing="false" onAction="#updateNow" text="Update" />
-            <Circle id="connectionIndicator" fill="#cd1808" layoutX="11.0" layoutY="141.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+            <TextField fx:id="amount" layoutX="317.0" layoutY="44.0" promptText="Amount" />
+            <TextField fx:id="notes" layoutX="317.0" layoutY="79.0" promptText="Notes" />
+            <Button fx:id="update" layoutX="14.0" layoutY="79.0" mnemonicParsing="false" onAction="#updateNow" text="Update" />
+            <Button fx:id="clear" layoutX="92.0" layoutY="79.0" mnemonicParsing="false" onAction="#clearAll" prefHeight="26.0" prefWidth="66.0" text="Clear" />
+            <ProgressBar fx:id="progressBar" layoutX="25.0" layoutY="26.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="13.0" prefWidth="500.0" progress="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>
    </children>

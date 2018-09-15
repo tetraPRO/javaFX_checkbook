@@ -1,7 +1,12 @@
 package sample.util;
 
+import javafx.scene.control.TextInputDialog;
+import javafx.stage.StageStyle;
+import sample.FxDialog;
+
 import javax.swing.*;
 import java.sql.*;
+import java.util.Optional;
 
 public class DBUtil {
     private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -27,22 +32,25 @@ public class DBUtil {
 
         try {
 
+
             JPanel panel = new JPanel();
-            JLabel label = new JLabel("Enter database password:");
-            JPasswordField pass = new JPasswordField(10);
-            panel.add(label);
-            panel.add(pass);
-            String[] options = new String[]{"OK", "Cancel"};
-            int option = JOptionPane.showOptionDialog(null, panel, "Database password",
-                    JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
-                    null, options, options[1]);
-            char[] passwd = null;
-            if(option == 0){//pressed OK
-                passwd = pass.getPassword();
-            }else{
-                //close program bc no password
-                System.exit(0);
-            }
+              JLabel label = new JLabel("Enter database password:");
+              JPasswordField pass = new JPasswordField(10);
+              panel.add(label);
+              panel.add(pass);
+              String[] options = new String[]{"OK", "Cancel"};
+              int option = JOptionPane.showOptionDialog(null, panel, "Database password",
+                      JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
+                      null, options, options[0]);
+              char[] passwd = null;
+              if(option == 0){//pressed OK
+                  passwd = pass.getPassword();
+              }else{
+                  //close program bc no password
+                  System.exit(0);
+              }
+
+
             conn = DriverManager.getConnection(connStr, "tetrapro", new String(passwd));
 
         } catch (SQLException ex) {
@@ -105,5 +113,53 @@ public class DBUtil {
             e.printStackTrace();
         }
         return result;
+    }
+
+    public String getBalance(String account){
+
+        double balance = 0.0;
+        String initial = null;
+        String allDeposits = null;
+        String allDebits = null;
+        String queryInitial = "SELECT amount FROM ledger WHERE from_account = ? AND notes = 'Initial Balance';";//get initial balance and add all deposits and subtract all debits
+        String queryDeposits = "SELECT SUM(amount) FROM ledger WHERE from_account = ? AND notes = 'Deposit';";
+        String queryDebits = "SELECT SUM(amount) FROM ledger WHERE from_account = ?;";// AND (date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-01') AND NOW())
+        ResultSet rs = null;
+
+        if(conn == null){
+            try {
+                connectDB();
+                PreparedStatement statement = conn.prepareStatement(queryInitial);
+                statement.setString(1, account);
+                rs = statement.executeQuery();
+                while(rs.next()){
+                    initial = rs.getString(1);
+                }
+                conn.close();
+
+                PreparedStatement depositStmt = conn.prepareStatement(queryDeposits);
+                depositStmt.setString(1, account);
+                rs = statement.executeQuery();
+                while(rs.next()){
+                    allDeposits = rs.getString(1);
+                }
+                conn.close();
+
+                PreparedStatement debitsStmt = conn.prepareStatement(queryDebits);
+                debitsStmt.setString(1, account);
+                rs = statement.executeQuery();
+                while(rs.next()){
+                    allDebits = rs.getString(1);
+                }
+                conn.close();
+
+                balance = Double.parseDouble(initial) + Double.parseDouble(allDeposits) - Double.parseDouble(allDebits);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return String.valueOf(balance);
     }
 }
