@@ -1,4 +1,4 @@
-package sample;
+package ledger;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

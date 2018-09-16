@@ -1,4 +1,4 @@
-package sample.model;
+package ledger.model;
 
 import javafx.beans.property.SimpleStringProperty;
 

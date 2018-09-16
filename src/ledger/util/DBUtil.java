@@ -1,12 +1,7 @@
-package sample.util;
-
-import javafx.scene.control.TextInputDialog;
-import javafx.stage.StageStyle;
-import sample.FxDialog;
+package ledger.util;
 
 import javax.swing.*;
 import java.sql.*;
-import java.util.Optional;
 
 public class DBUtil {
     private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";

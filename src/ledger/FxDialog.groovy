@@ -1,4 +1,4 @@
-package sample
+package ledger
 
 import javafx.scene.control.TextInputDialog
 import javafx.stage.StageStyle

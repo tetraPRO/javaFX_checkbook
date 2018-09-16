@@ -1,10 +1,10 @@
-package sample.controller
+package ledger.controller
 
 import javafx.event.ActionEvent
 import javafx.fxml.Initializable
 import javafx.scene.control.*
 import javafx.scene.layout.AnchorPane
-import sample.util.DBUtil
+import ledger.util.DBUtil
 
 import java.sql.SQLException
 
@@ -50,7 +50,7 @@ class Controller implements Initializable {
             amount.setText(balance)
             notes.setText("Current Balance")
         } else if (update.text == "Budget Amount"){
-            //possibly a new table to hold budget data...?
+            /*possibly a new table to hold budget data...? */
         }else {
             String today = date.getValue().toString()
             String from = from_account.getValue().toString()
