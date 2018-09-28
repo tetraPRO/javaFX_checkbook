@@ -44,13 +44,17 @@ class Controller implements Initializable {
      */
     void updateNow(ActionEvent actionEvent) {
 
-        if (update.text == "Get it!") {//no need for date here
-            //select query here...
-            def balance = data.getBalance(from_account.getValue().toString())
+        if (update.text == "Get it!") {
+            String account = from_account.getValue().toString()
+            String balance = data.getBalance(account)
             amount.setText(balance)
-            notes.setText("Current Balance")
-        } else if (update.text == "Budget Amount"){
+
+            update.setText("Update")
+
+        } else if (update.text == "Budget"){
             /*possibly a new table to hold budget data...? */
+
+
         }else {
             String today = date.getValue().toString()
             String from = from_account.getValue().toString()
@@ -64,10 +68,18 @@ class Controller implements Initializable {
             params[2] = to
             params[3] = amountOfTrans
             params[4] = notesOfTrans
-            data.executeUpdate("INSERT INTO ledger (date, from_account, to_account, amount, notes) VALUES (?,?,?,?,?);", params)
+            def isSuccessful = data.executeUpdate("INSERT INTO ledger (date, from_account, to_account, amount, notes) VALUES (?,?,?,?,?);", params)
+            if(isSuccessful){
+                clearAll(actionEvent)
+            }
         }
 
-        clearAll(actionEvent)
+        if(!date.isVisible()){
+            date.setVisible(true)
+        }
+        if(!to_account.isVisible()){
+            to_account.setVisible(true)
+        }
     }
 
     /**
@@ -78,7 +90,7 @@ class Controller implements Initializable {
     void initialBalance(ActionEvent actionEvent) {
         clearAll(actionEvent)
         from_account.setPromptText("Account")
-        to_account.setValue("Set Balance")
+        to_account.setVisible(false)
         notes.setText("Initial Balance")
 
     }
@@ -90,10 +102,8 @@ class Controller implements Initializable {
     void accountBalance(ActionEvent actionEvent) {
         clearAll(actionEvent)
 
+        date.setVisible(false)
         to_account.setVisible(false)
-        String account = from_account.getSelectionModel().getSelectedItem().toString()
-        String balance = data.getBalance(account)
-        amount.setText(balance)
         notes.setText("Current Balance")
         update.setText("Get it!")
     }
@@ -117,9 +127,11 @@ class Controller implements Initializable {
     }
 
     void setBudget(ActionEvent actionEvent) {
+        date.setVisible(false)
         from_account.setValue("Select Account")
         to_account.setVisible(false)
         notes.setText("Budget Amount")
+        update.setText("Budget")
     }
 
     void addDeposit(ActionEvent actionEvent) {
