@@ -198,6 +198,13 @@ public class DBUtil {
         return String.valueOf(balance);
     }
 
+    /**
+     * Returns a resultset of all transactions
+     * for a given account from the 1st of the
+     * month until current date
+     * @param account
+     * @return
+     */
     public ResultSet getTransactions(String account) {
 
         if(conn == null){
@@ -221,6 +228,11 @@ public class DBUtil {
         return rs;
     }
 
+    /**
+     * Set the budget for a given parameters
+     * @param params
+     * @return
+     */
     public boolean setBudget(String[] params){
         String sql = "INSERT INTO ledger (date, from_account, amount, notes) VALUES (?,?,?,?);";
 
@@ -249,6 +261,12 @@ public class DBUtil {
         return isSuccessful;
     }
 
+    /**
+     * Returns a double value of the budget
+     * for the given account
+     * @param account
+     * @return
+     */
     public Double getBudget(String account){
         String sql = "SELECT amount FROM ledger WHERE from_account = ? AND notes = 'Budget';";
         ResultSet rs;
@@ -279,6 +297,13 @@ public class DBUtil {
         return budget;
     }
 
+    /**
+     *  Returns a double value of the amount spent
+     *  on the account from the 1st of the month
+     *  until current date
+     * @param account
+     * @return
+     */
     public Double getSpent(String account){
         String sql = "SELECT SUM(amount) FROM ledger WHERE to_account = ? AND (date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-01') AND NOW());";
         ResultSet rs;
