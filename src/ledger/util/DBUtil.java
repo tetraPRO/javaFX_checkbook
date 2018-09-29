@@ -13,18 +13,20 @@ public class DBUtil {
      * Returns a boolean value true if
      * the database is connected or false
      * otherwise
+     *
      * @return
      */
-    public boolean isConnected(){
-        if(conn == null){
+    public boolean isConnected() {
+        if (conn == null) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
 
     /**
      * Connects the database with username & password
+     *
      * @throws SQLException
      * @throws ClassNotFoundException
      */
@@ -53,6 +55,7 @@ public class DBUtil {
 
     /**
      * Disconnect the database
+     *
      * @throws SQLException
      */
     public static void dbDisconnect() throws SQLException {
@@ -68,12 +71,13 @@ public class DBUtil {
 
     /**
      * INSERT INTO ledger (date, from_account, to_account, amount, notes) VALUES (?,?,?,?,?)
+     *
      * @param query
      * @param values
      */
-    public boolean executeUpdate(String query, String[] values){
+    public boolean executeUpdate(String query, String[] values) {
         try {
-            if(conn == null){
+            if (conn == null) {
                 connectDB();
             }
             PreparedStatement statement = conn.prepareStatement(query);
@@ -83,30 +87,32 @@ public class DBUtil {
             statement.setString(4, values[3]);
             statement.setString(5, values[4]);
             int rowsInserted = statement.executeUpdate();
-            if(rowsInserted > 0){
+            if (rowsInserted > 0) {
                 System.out.println("Data updated successfully!");
                 return true;
-            }else {
+            } else {
                 return false;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }return false;
+        }
+        return false;
     }
 
     /**
      * Execute a SQL query to the database and
      * return a resultset with queried data
+     *
      * @param query
      * @return
      */
-    public ResultSet executeQuery(String query){
+    public ResultSet executeQuery(String query) {
         ResultSet result = null;
-        try{
+        try {
             String sql = query;
-            if(conn == null){
+            if (conn == null) {
                 connectDB();
             }
 
@@ -123,10 +129,11 @@ public class DBUtil {
 
     /**
      * Returns the current balance of a given account
+     *
      * @param account
      * @return
      */
-    public String getBalance(String account){
+    public String getBalance(String account) {
 
         double balance = 0.0;
         String initial = null;
@@ -138,7 +145,7 @@ public class DBUtil {
         String queryDebits = "SELECT SUM(amount) FROM ledger WHERE date >= ? AND from_account = ? AND notes != 'Initial Balance' AND notes != 'Deposit';";// AND (date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-01') AND NOW())
         ResultSet rs;
 
-        if(conn == null){
+        if (conn == null) {
             try {
                 connectDB();
             } catch (SQLException e) {
@@ -147,11 +154,11 @@ public class DBUtil {
                 e.printStackTrace();
             }
         }
-        try{
+        try {
             PreparedStatement statement = conn.prepareStatement(queryInitial);
             statement.setString(1, account);
             rs = statement.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 initialDate = rs.getString(1);
                 initial = rs.getString(2);
             }
@@ -160,7 +167,7 @@ public class DBUtil {
             depositStmt.setString(1, initialDate);
             depositStmt.setString(2, account);
             rs = depositStmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 allDeposits = rs.getString(1);
             }
 
@@ -168,18 +175,18 @@ public class DBUtil {
             debitsStmt.setString(1, initialDate);
             debitsStmt.setString(2, account);
             rs = debitsStmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 allDebits = rs.getString(1);
             }
             rs.close();
 
-            if(initial == null){
+            if (initial == null) {
                 initial = "0.0";
             }
-            if(allDeposits == null){
+            if (allDeposits == null) {
                 allDeposits = "0.0";
             }
-            if(allDebits == null){
+            if (allDebits == null) {
                 allDebits = "0.0";
             }
 
@@ -189,5 +196,116 @@ public class DBUtil {
             e.printStackTrace();
         }
         return String.valueOf(balance);
+    }
+
+    public ResultSet getTransactions(String account) {
+
+        if(conn == null){
+            try {
+                connectDB();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        String sql = "SELECT date, from_account, to_account, amount, notes FROM ledger WHERE to_account = ? AND (date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-01') AND NOW());";
+        ResultSet rs = null;
+        try {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, account);
+            rs = statement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
+    public boolean setBudget(String[] params){
+        String sql = "INSERT INTO ledger (date, from_account, amount, notes) VALUES (?,?,?,?);";
+
+        boolean isSuccessful = false;
+
+        if(conn == null){
+            try {
+                connectDB();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+        try {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, params[0]);
+            statement.setString(2, params[1]);
+            statement.setString(3, params[2]);
+            statement.setString(4, params[3]);
+            isSuccessful = statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isSuccessful;
+    }
+
+    public Double getBudget(String account){
+        String sql = "SELECT amount FROM ledger WHERE from_account = ? AND notes = 'Budget';";
+        ResultSet rs;
+
+        if(conn == null){
+            try {
+                connectDB();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+        Double budget = 0.0;
+
+        try {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, account);
+            rs = statement.executeQuery();
+
+            while(rs.next()){
+                budget = rs.getDouble(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return budget;
+    }
+
+    public Double getSpent(String account){
+        String sql = "SELECT SUM(amount) FROM ledger WHERE to_account = ? AND (date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-01') AND NOW());";
+        ResultSet rs;
+
+        if(conn == null){
+            try {
+                connectDB();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+        Double spent = 0.0;
+
+        try {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, account);
+            rs = statement.executeQuery();
+
+            while(rs.next()){
+                spent = rs.getDouble(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return spent;
     }
 }

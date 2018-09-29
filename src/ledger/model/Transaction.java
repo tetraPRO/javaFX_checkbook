@@ -3,42 +3,34 @@ package ledger.model;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Transaction {
-    public SimpleStringProperty date = new SimpleStringProperty();
+    public SimpleStringProperty date;
+    public SimpleStringProperty to;
+    public SimpleStringProperty from;
+    public SimpleStringProperty amount;
+    public SimpleStringProperty notes;
+
+    Transaction(String dateOf, String toOf, String fromOf, String amountOf, String notesOf){
+        this.date = new SimpleStringProperty(dateOf);
+        this.to = new SimpleStringProperty(toOf);
+        this.from = new SimpleStringProperty(fromOf);
+        this.amount = new SimpleStringProperty(amountOf);
+        this.notes = new SimpleStringProperty(notesOf);
+    }
+
 
     public String getFrom() {
         return from.get();
     }
-
-    public SimpleStringProperty fromProperty() {
-        return from;
-    }
-
     public void setFrom(String from) {
         this.from.set(from);
     }
 
-    public SimpleStringProperty from = new SimpleStringProperty();
-
-    public String getDate() {
-        return date.get();
-    }
-
-    public SimpleStringProperty dateProperty() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date.set(date);
-    }
+    public String getDate() { return date.get(); }
+    public void setDate(String date) { this.date.set(date); }
 
     public String getTo() {
         return to.get();
     }
-
-    public SimpleStringProperty toProperty() {
-        return to;
-    }
-
     public void setTo(String to) {
         this.to.set(to);
     }
@@ -46,11 +38,6 @@ public class Transaction {
     public String getAmount() {
         return amount.get();
     }
-
-    public SimpleStringProperty amountProperty() {
-        return amount;
-    }
-
     public void setAmount(String amount) {
         this.amount.set(amount);
     }
@@ -58,18 +45,9 @@ public class Transaction {
     public String getNotes() {
         return notes.get();
     }
-
-    public SimpleStringProperty notesProperty() {
-        return notes;
-    }
-
     public void setNotes(String notes) {
         this.notes.set(notes);
     }
-
-    public SimpleStringProperty to = new SimpleStringProperty();
-    public SimpleStringProperty amount = new SimpleStringProperty();
-    public SimpleStringProperty notes = new SimpleStringProperty();
 
 
 }
