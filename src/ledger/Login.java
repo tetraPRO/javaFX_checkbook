@@ -24,8 +24,8 @@ public class Login {
 
         Password pass = new Password();
 
-        String url = "https://www.tucsonfcu.com";
-        String homeURL = "https://www.tucsonfcusecure.com/tob/live/usp-core/app/initialLogin";
+        String url = "https://www.tucsonfcusecure.com";
+        String postURL = url + "/tob/live/usp-core/app/initialLogin";
 
         Login http = new Login();
 
@@ -36,10 +36,10 @@ public class Login {
         String postParams = http.getFormParams(page, "caputo1713!", new String(pass.getPass()));
 
         //construct above post content and send a POST request
-        http.sendPost(url, postParams);
+        http.sendPost(postURL, postParams);
 
         //success then go to bank
-        String result = http.getPageContent(homeURL);
+        String result = http.getPageContent(url + "/tob/live/usp-core/app/home");
         System.out.println(result);
     }
 

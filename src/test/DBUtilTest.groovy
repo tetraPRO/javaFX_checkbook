@@ -6,7 +6,7 @@ import java.sql.ResultSet
 
 class DBUtilTest extends GroovyTestCase{
 
-    DBUtil data = new DBUtil()
+
 
     void testDBConnection(){
         data.connectDB()
@@ -37,5 +37,29 @@ class DBUtilTest extends GroovyTestCase{
         balance = data.getBalance("Bank")
         println balance
         assert balance == '1616.22'
+    }
+
+    void testTransactions(){
+
+        ResultSet rs = null
+        rs = data.getTransactions("Bank")
+        while(rs.next()){
+            for(int i=1;i<=rs.getMetaData().getColumnCount();i++){
+                print(rs.getString(i))
+            }
+        }
+        assert rs != null
+    }
+
+    void testGetBudget(){
+
+        Double budget = data.getBudget('Bank')
+        assert budget == 4000.0
+    }
+
+    void testGetSpent(){
+        DBUtil data = new DBUtil()
+        Double spent = data.getSpent('Groceries/Food')
+        assert spent == 218.14
     }
 }

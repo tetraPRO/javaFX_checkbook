@@ -5,15 +5,19 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchor" prefHeight="111.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ledger.controller.Controller">
+<AnchorPane fx:id="anchor" prefHeight="486.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ledger.controller.Controller">
    <children>
       <MenuBar fx:id="menuBar" layoutY="-4.0" prefHeight="29.0" prefWidth="500.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <menus>
@@ -95,5 +99,38 @@
       <Button fx:id="update" layoutX="14.0" layoutY="79.0" mnemonicParsing="false" onAction="#updateNow" text="Update" />
       <Button fx:id="clear" layoutX="92.0" layoutY="79.0" mnemonicParsing="false" onAction="#clearAll" prefHeight="26.0" prefWidth="66.0" text="Clear" />
       <ProgressBar fx:id="progressBar" layoutX="25.0" layoutY="26.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="13.0" prefWidth="500.0" progress="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <TabPane layoutY="112.0" prefHeight="378.0" prefWidth="741.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="108.0">
+        <tabs>
+            <Tab text="Budget">
+                <content>
+                    <fx:include fx:id="budgetTab" source="Budget.fxml" />
+                </content>
+            </Tab>
+            <Tab text="Credit">
+                <content>
+                    <fx:include fx:id="creditTab" source="Credit.fxml" />
+                </content>
+            </Tab>
+            <Tab text="Debts">
+                <content>
+                    <fx:include fx:id="debtsTab" source="Debts.fxml" />
+                </content>
+            </Tab>
+            <Tab text="Assets">
+                <content>
+                    <fx:include fx:id="assetsTab" source="Assets.fxml" />
+                </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Label layoutX="512.0" layoutY="49.0" text="Bank:">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="displayBalance" layoutX="574.0" layoutY="50.0" prefHeight="16.0" prefWidth="132.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
