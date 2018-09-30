@@ -8,34 +8,34 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="334.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ledger.controller.Budget">
-   <children>
-       <ComboBox fx:id="account" layoutX="14.0" layoutY="14.0" prefWidth="150.0" promptText="Accout">
-           <items>
-               <FXCollections fx:factory="observableArrayList">
-                   <String fx:value="Housing" />
-                   <String fx:value="Utilities" />
-                   <String fx:value="Insurance" />
-                   <String fx:value="Vehicle(s)" />
-                   <String fx:value="Fuel" />
-                   <String fx:value="Groceries/Food" />
-                   <String fx:value="Entertainment" />
-                   <String fx:value="Fees/Fines" />
-                   <String fx:value="Health/Wellness" />
-                   <String fx:value="Clothing" />
-                   <String fx:value="Payments" />
-                   <String fx:value="Furniture" />
-                   <String fx:value="Other" />
-               </FXCollections>
-           </items>
-       </ComboBox>
-      <ProgressBar fx:id="budgetProgress" layoutX="14.0" layoutY="51.0" maxHeight="13.0" minHeight="13.0" prefHeight="13.0" prefWidth="711.0" progress="0.0" />
-      <Label fx:id="budgetLabel" layoutX="14.0" layoutY="67.0" text="Budget:" />
-      <Label fx:id="budgetDisplay" layoutX="71.0" layoutY="67.0" prefHeight="16.0" prefWidth="93.0" />
-      <TableView fx:id="budgetTable" layoutX="14.0" layoutY="89.0" prefHeight="236.0" prefWidth="711.0">
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-      </TableView>
-   </children>
+<AnchorPane prefHeight="334.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ledger.controller.Budget">
+    <ComboBox fx:id="account" layoutX="14.0" layoutY="14.0" prefWidth="150.0" promptText="Account">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Housing"/>
+                <String fx:value="Utilities"/>
+                <String fx:value="Insurance"/>
+                <String fx:value="Vehicle(s)"/>
+                <String fx:value="Fuel"/>
+                <String fx:value="Groceries/Food"/>
+                <String fx:value="Entertainment"/>
+                <String fx:value="Fees/Fines"/>
+                <String fx:value="Health/Wellness"/>
+                <String fx:value="Clothing"/>
+                <String fx:value="Payments"/>
+                <String fx:value="Furniture"/>
+                <String fx:value="Other"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+    <ProgressBar fx:id="budgetProgress" layoutX="14.0" layoutY="51.0" maxHeight="13.0" minHeight="13.0"
+                 prefHeight="13.0" prefWidth="711.0" progress="0.0"/>
+    <Label fx:id="budgetLabel" layoutX="176.0" layoutY="19.0" text="Budget:"/>
+    <Label fx:id="budgetDisplay" layoutX="236.0" layoutY="19.0" prefHeight="16.0" prefWidth="93.0"/>
+    <TableView fx:id="budgetTable" layoutX="14.0" layoutY="74.0" prefHeight="251.0" prefWidth="711.0">
+        <columnResizePolicy>
+          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+    </TableView>
 </AnchorPane>

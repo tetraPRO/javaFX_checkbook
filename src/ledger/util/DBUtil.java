@@ -216,7 +216,7 @@ public class DBUtil {
                 e.printStackTrace();
             }
         }
-        String sql = "SELECT date, from_account, to_account, amount, notes FROM ledger WHERE to_account = ? AND (date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-01') AND NOW());";
+        String sql = "SELECT date, from_account, to_account, amount, notes FROM ledger WHERE to_account = ? AND notes != 'Budget' AND (date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-01') AND NOW());";
         ResultSet rs = null;
         try {
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -234,7 +234,7 @@ public class DBUtil {
      * @return
      */
     public boolean setBudget(String[] params){
-        String sql = "INSERT INTO ledger (date, from_account, amount, notes) VALUES (?,?,?,?);";
+        String sql = "INSERT INTO ledger (date, to_account, amount, notes) VALUES (?,?,?,?);";
 
         boolean isSuccessful = false;
 
@@ -254,7 +254,11 @@ public class DBUtil {
             statement.setString(2, params[1]);
             statement.setString(3, params[2]);
             statement.setString(4, params[3]);
-            isSuccessful = statement.execute();
+
+            int rowsInserted = statement.executeUpdate();
+            if(rowsInserted > 0){
+                isSuccessful = true;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -268,7 +272,7 @@ public class DBUtil {
      * @return
      */
     public Double getBudget(String account){
-        String sql = "SELECT amount FROM ledger WHERE from_account = ? AND notes = 'Budget';";
+        String sql = "SELECT amount FROM ledger WHERE to_account = ? AND notes = 'Budget';";
         ResultSet rs;
 
         if(conn == null){
@@ -305,7 +309,7 @@ public class DBUtil {
      * @return
      */
     public Double getSpent(String account){
-        String sql = "SELECT SUM(amount) FROM ledger WHERE to_account = ? AND (date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-01') AND NOW());";
+        String sql = "SELECT SUM(amount) FROM ledger WHERE to_account = ? AND notes != 'Budget' AND (date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-01') AND NOW());";
         ResultSet rs;
 
         if(conn == null){

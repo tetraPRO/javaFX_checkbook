@@ -66,7 +66,7 @@ class Budget implements Initializable{
 
     void buildData(){
 
-        final ObservableList<ObservableList<String>> data = null
+        final ObservableList<ObservableList<String>> data = FXCollections.observableArrayList()
 
         try{
             //ResultSet
@@ -85,6 +85,7 @@ class Budget implements Initializable{
                     }
                 })
 
+                col.setStyle("-fx-alignment: CENTER")
                 budgetTable.getColumns().addAll(col)
             }
 
@@ -97,9 +98,13 @@ class Budget implements Initializable{
                 ObservableList<String> row = FXCollections.observableArrayList()
                 for(int i=1 ; i<=rs.getMetaData().getColumnCount(); i++){
                     //Iterate Column
-                    row.add(rs.getString(i))
+                    if(i == 1){
+                        String[] parts = rs.getString(i).split(" ")
+                        row.add parts[0]
+                    }else{
+                        row.add(rs.getString(i))
+                    }
                 }
-                println("Row [1] added "+row )
                 data?.add(row)
             }
 

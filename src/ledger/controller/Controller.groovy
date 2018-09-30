@@ -7,6 +7,8 @@ import javafx.scene.layout.AnchorPane
 import ledger.util.DBUtil
 
 import java.sql.SQLException
+import java.text.NumberFormat
+import java.time.LocalDate
 
 class Controller implements Initializable {
 
@@ -19,6 +21,7 @@ class Controller implements Initializable {
     public Button update
     public ProgressBar progressBar
     static DBUtil data = null
+    public Label displayBalance
 
     @Override
     void initialize(URL url, ResourceBundle resourceBundle) {
@@ -36,13 +39,18 @@ class Controller implements Initializable {
         } catch (ClassNotFoundException e) {
             e.printStackTrace()
         }
+
+        String balance = data.getBalance("Bank")
+        NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.US)
+
+        displayBalance.setText nf.format(Double.parseDouble(balance))
     }
 
     /**
      * Adds all input fields into the database
      * @param actionEvent
      */
-    void updateNow(ActionEvent actionEvent) {
+    void updateNow() {
 
         if (update.text == "Get it!") {
             String account = from_account.getValue().toString()
@@ -52,9 +60,14 @@ class Controller implements Initializable {
             update.setText("Update")
 
         } else if (update.text == "Budget"){
-            /*possibly a new table to hold budget data...? */
-
-
+            String now = date.getValue()
+            String account = to_account.getValue().toString()
+            String budget = amount.getText()
+            String note = notes.getText()
+            String[] params = [now,account,budget,note]
+            if(data.setBudget(params)){
+                clearAll()
+            }
         }else {
             String today = date.getValue().toString()
             String from = from_account.getValue().toString()
@@ -70,7 +83,7 @@ class Controller implements Initializable {
             params[4] = notesOfTrans
             def isSuccessful = data.executeUpdate("INSERT INTO ledger (date, from_account, to_account, amount, notes) VALUES (?,?,?,?,?);", params)
             if(isSuccessful){
-                clearAll(actionEvent)
+                clearAll()
             }
         }
 
@@ -79,6 +92,9 @@ class Controller implements Initializable {
         }
         if(!to_account.isVisible()){
             to_account.setVisible(true)
+        }
+        if(!from_account.isVisible()){
+            from_account.setVisible(true)
         }
     }
 
@@ -112,7 +128,7 @@ class Controller implements Initializable {
      * Clears all input fields
      * @param actionEvent
      */
-    void clearAll(ActionEvent actionEvent) {
+    void clearAll() {
         //clean up fields
         date.setValue(null)
         date.setPromptText("Date")
@@ -126,15 +142,15 @@ class Controller implements Initializable {
         notes.setPromptText("Notes")
     }
 
-    void setBudget(ActionEvent actionEvent) {
-        date.setVisible(false)
-        from_account.setValue("Select Account")
-        to_account.setVisible(false)
-        notes.setText("Budget Amount")
+    void setBudget() {
+        date.setValue(LocalDate.now())
+        from_account.setVisible(false)
+        to_account.setValue("Select Account")
+        notes.setText("Budget")
         update.setText("Budget")
     }
 
-    void addDeposit(ActionEvent actionEvent) {
+    void addDeposit() {
         from_account.setValue("Into Account")
         to_account.setVisible(false)
         notes.setText("Deposit")

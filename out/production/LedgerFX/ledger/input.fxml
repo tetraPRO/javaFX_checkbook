@@ -15,6 +15,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="anchor" prefHeight="486.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ledger.controller.Controller">
    <children>
@@ -122,6 +123,14 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Label layoutX="512.0" layoutY="49.0" text="Bank:" />
+      <Label layoutX="512.0" layoutY="49.0" text="Bank:">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="displayBalance" layoutX="574.0" layoutY="50.0" prefHeight="16.0" prefWidth="132.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
