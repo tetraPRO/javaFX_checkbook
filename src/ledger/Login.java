@@ -33,7 +33,7 @@ public class Login {
 
         //send GET request
         String page = http.getPageContent(url);
-        String postParams = http.getFormParams(page, "caputo1713!", new String(pass.getPass()));
+        String postParams = http.getFormParams(page, new String(pass.getPass()), new String(pass.getPass()));
 
         //construct above post content and send a POST request
         http.sendPost(postURL, postParams);
