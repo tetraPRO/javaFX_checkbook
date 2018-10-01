@@ -216,7 +216,7 @@ public class DBUtil {
                 e.printStackTrace();
             }
         }
-        String sql = "SELECT date, from_account, to_account, amount, notes FROM ledger WHERE to_account = ? AND notes != 'Budget' AND (date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-01') AND NOW());";
+        String sql = "SELECT date, from_account, to_account, amount, notes FROM ledger WHERE to_account = ? AND notes != 'Budget' AND (date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-01') AND NOW()) ORDER BY date DESC;";
         ResultSet rs = null;
         try {
             PreparedStatement statement = conn.prepareStatement(sql);

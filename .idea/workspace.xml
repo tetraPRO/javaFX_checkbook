@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="adding methods for deposits and initial balance">
+      <change afterPath="$PROJECT_DIR$/src/test/LoginTest.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LedgerFX/ledger/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LedgerFX/ledger/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LedgerFX/ledger/controller/Budget.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LedgerFX/ledger/controller/Budget.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LedgerFX/ledger/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LedgerFX/ledger/controller/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LedgerFX/ledger/input.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LedgerFX/ledger/input.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LedgerFX/ledger/util/DBUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LedgerFX/ledger/util/DBUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ledger/Budget.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ledger/Budget.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ledger/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ledger/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ledger/controller/Budget.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/ledger/controller/Budget.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ledger/controller/Controller.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/ledger/controller/Controller.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ledger/input.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ledger/input.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ledger/util/DBUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ledger/util/DBUtil.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -71,36 +66,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Budget.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ledger/Budget.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-148">
-              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Budget.groovy" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ledger/controller/Budget.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
-              <folding>
-                <element signature="e#27#76#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DBUtil.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DBUtil.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ledger/util/DBUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="218" column="129" selection-start-line="218" selection-start-column="129" selection-end-line="218" selection-end-column="129" />
+            <state relative-caret-position="300">
+              <caret line="218" column="204" selection-start-line="218" selection-start-column="204" selection-end-line="218" selection-end-column="204" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Login.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ledger/Login.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="293">
+              <caret line="166" column="9" lean-forward="true" selection-start-line="166" selection-start-column="9" selection-end-line="166" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginTest.groovy" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/LoginTest.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="33" lean-forward="true" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -163,12 +154,13 @@
         <option value="$PROJECT_DIR$/src/ledger/util/TableView.java" />
         <option value="$PROJECT_DIR$/src/ledger/model/Transaction.java" />
         <option value="$PROJECT_DIR$/src/test/DBUtilTest.groovy" />
-        <option value="$PROJECT_DIR$/src/ledger/Login.java" />
         <option value="$PROJECT_DIR$/src/ledger/controller/Budget.groovy" />
         <option value="$PROJECT_DIR$/src/ledger/input.fxml" />
-        <option value="$PROJECT_DIR$/src/ledger/controller/Controller.groovy" />
         <option value="$PROJECT_DIR$/src/ledger/Budget.fxml" />
         <option value="$PROJECT_DIR$/src/ledger/util/DBUtil.java" />
+        <option value="$PROJECT_DIR$/src/ledger/controller/Controller.groovy" />
+        <option value="$PROJECT_DIR$/src/test/LoginTest.groovy" />
+        <option value="$PROJECT_DIR$/src/ledger/Login.java" />
       </list>
     </option>
   </component>
@@ -194,6 +186,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -235,6 +229,12 @@
             </path>
             <path>
               <item name="LedgerFX" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LedgerFX" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LedgerFX" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -242,8 +242,6 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -289,7 +287,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Login">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
@@ -343,29 +341,6 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="DBUtilTest.testGetPassword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LedgerFX" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.DBUtilTest" />
-      <option name="METHOD_NAME" value="testGetPassword" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <patterns />
-    </configuration>
     <configuration name="DBUtilTest.testGetSpent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LedgerFX" />
       <extension name="coverage">
@@ -402,6 +377,29 @@
       <option name="PACKAGE_NAME" value="test" />
       <option name="MAIN_CLASS_NAME" value="test.DBUtilTest" />
       <option name="METHOD_NAME" value="testTransactions" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="LoginTest.testLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LedgerFX" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.LoginTest" />
+      <option name="METHOD_NAME" value="testLogin" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -470,19 +468,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.DBUtilTest.testGetPassword" />
       <item itemvalue="Application.Login" />
       <item itemvalue="JUnit.DBUtilTest.testTransactions" />
       <item itemvalue="JUnit.DBUtilTest.testGetBudget" />
       <item itemvalue="JUnit.DBUtilTest.testGetSpent" />
+      <item itemvalue="JUnit.LoginTest.testLogin" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Login" />
+        <item itemvalue="JUnit.LoginTest.testLogin" />
         <item itemvalue="JUnit.DBUtilTest.testGetSpent" />
         <item itemvalue="JUnit.DBUtilTest.testTransactions" />
         <item itemvalue="JUnit.DBUtilTest.testGetBudget" />
-        <item itemvalue="JUnit.DBUtilTest.testGetPassword" />
       </list>
     </recent_temporary>
   </component>
@@ -501,12 +499,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DBUtilTest_testGetBudget - 2018.09.29 at 09h 52m 03s.xml">
-      <configuration name="DBUtilTest.testGetBudget" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DBUtilTest_testGetBudget - 2018.09.29 at 09h 52m 35s.xml">
-      <configuration name="DBUtilTest.testGetBudget" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="DBUtilTest_testGetBudget - 2018.09.29 at 09h 52m 53s.xml">
       <configuration name="DBUtilTest.testGetBudget" configurationId="JUnit" />
     </history-entry>
@@ -531,6 +523,12 @@
     <history-entry file="DBUtilTest_testGetSpent - 2018.09.29 at 15h 27m 46s.xml">
       <configuration name="DBUtilTest.testGetSpent" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="LoginTest_testLogin - 2018.09.30 at 16h 05m 41s.xml">
+      <configuration name="LoginTest.testLogin" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LoginTest_testLogin - 2018.09.30 at 16h 06m 06s.xml">
+      <configuration name="LoginTest.testLogin" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="1302000" />
@@ -552,7 +550,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.36316696" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.15075758" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.1530303" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="8" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -565,13 +563,13 @@
       <window_info anchor="bottom" id="Find" order="1" weight="0.32933104" />
       <window_info anchor="bottom" id="Changes" order="7" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Database" order="7" />
       <window_info anchor="bottom" id="Profiler" order="7" />
       <window_info anchor="bottom" id="Problems" order="7" />
       <window_info anchor="right" x="99" y="128" width="1168" height="513" id="Byte Code Viewer" order="9" type="FLOATING" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Application Servers" order="7" />
-      <window_info anchor="right" id="Database" order="7" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -593,16 +591,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ledger/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="12" column="68" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ledger/controller/Controller.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="900">
@@ -629,9 +617,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="68" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -661,9 +646,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="12" column="68" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -693,9 +675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="12" column="68" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -725,9 +704,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -757,9 +733,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="8" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -886,9 +859,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -907,30 +877,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ledger/Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/java/8.0.172-zulu/src.zip!/java/sql/PreparedStatement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="478" column="12" selection-start-line="478" selection-start-column="12" selection-end-line="478" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ledger/controller/Controller.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-          <folding>
-            <element signature="e#27#58#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -960,13 +910,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ledger/controller/Controller.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="30" lean-forward="true" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+          <folding>
+            <element signature="e#27#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ledger/util/DBUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="218" column="129" selection-start-line="218" selection-start-column="129" selection-end-line="218" selection-end-column="129" />
+        <state relative-caret-position="300">
+          <caret line="218" column="204" selection-start-line="218" selection-start-column="204" selection-end-line="218" selection-end-column="204" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/LoginTest.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="33" lean-forward="true" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ledger/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="166" column="9" lean-forward="true" selection-start-line="166" selection-start-column="9" selection-end-line="166" selection-end-column="9" />
         </state>
       </provider>
     </entry>

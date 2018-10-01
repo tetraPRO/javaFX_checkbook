@@ -39,7 +39,7 @@ public class Login {
         http.sendPost(postURL, postParams);
 
         //success then go to bank
-        String result = http.getPageContent(url + "/tob/live/usp-core/app/home");
+        String result = http.getPageContent(url + "/tob/live/usp-core/app/postLogin");
         System.out.println(result);
     }
 
@@ -62,12 +62,12 @@ public class Login {
             }
         }
         /**Cookies
-         * JSESSIONID=5A117E1E24B5F3222E7649B60A18EFA7.usp2-sl1-prd1-dca;
-         * RT="r=https%3A%2F%2Fwww.tucsonfcusecure.com%2Ftob%2Flive%2Fusp-core%2Fapp%2Fhome&ul=1537920805357&hd=1537920805364";
-         * MAF_IB_aa138f16d6db11e79708005056af77d2=AZLkB5xHLIdgpTofZRyArLPZMHm8gkEyNH87CTQgEpMUDW0;
-         * rftoken=5ef3c633-8d80-49bc-bb0f-908f1e66bb88;
-         * BIGipServersdp-sl1.prd1.dca.diginsite.net_8080=3617023498.36895.0000;
-         * FMISSESSIONID=A74547DF60222625A86FEF9E52234D8D.node6
+         * BIGipServersdp-sl1.prd1.dca.diginsite.net_8080	3617023498.36895.0000
+         * FMISSESSIONID	5BBD93B9F5CA5032D5BF6101AF1193D9.node6
+         * JSESSIONID	C133DF9F93BF13FE7B095BE487C13289.usp2-sl1-prd1-dca
+         * MAF_IB_aa138f16d6db11e79708005056af77d2	AOjdBNyPpK6jxHtOAdv5z1enx40At7f0rHGMMbXcpcdNPfl
+         * rftoken	3503cceb-7c30-42d9-acbc-eede22ed810e
+         * RT	"nu=https://www.tucsonfcusecure.com/tob/live/usp-core/app/logout?reason=userlogout&cl=1538349094025&r=https://www.tucsonfcusecure.com/tob/live/usp-core/app/home&ul=1538349094176&hd=1538349094490"
          */
 
 
@@ -75,6 +75,12 @@ public class Login {
         conn.setRequestProperty("Referer", "https://tucsonfcu.com/");
         conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
         conn.setRequestProperty("Content-Length", Integer.toString(postParams.length()));
+        conn.setRequestProperty("Cookie", "BIGipServersdp-sl1.prd1.dca.diginsite.net_8080=3617023498.36895.0000");
+        conn.setRequestProperty("Cookie", "FMISSESSIONID=08BB302D279A00EA9B15925741E67C08.node6");
+        conn.setRequestProperty("Cookie", "JSESSIONID=231D5D734A3AE5C11BA5F18500596CF2.usp2-sl1-prd1-dca");
+        conn.setRequestProperty("Cookie", "MAF_IB_aa138f16d6db11e79708005056af77d2=AOjdBNyPpK6jxHtOAQd4pm55p9rWgQUCMnjPzXBnVBUqluc");
+        conn.setRequestProperty("Cookie", "rftoken=b162d0e4-9fbe-44c9-8723-58c63a269591");
+        conn.setRequestProperty("Cookie", "RT=nu=https://www.tucsonfcusecure.com/tob/live/usp-core/app/logout?reason=userlogout&cl=1538349094025&r=https://www.tucsonfcusecure.com/tob/live/usp-core/app/home&ul=1538349094176&hd=1538349094490");
 
         conn.setDoOutput(true);
         conn.setDoInput(true);
@@ -119,6 +125,12 @@ public class Login {
                 value = username;
             }else if(key.equals("password")){
                 value = password;
+            }else if(key.equals("testcookie")){
+                value = "true";
+            }else if(key.equals("testjs")){
+                value = "true";
+            }else if(key.equals("dscheck")){
+                value = "1";
             }
             paramList.add(key + "=" + URLEncoder.encode(value, "UTF-8"));
         }

@@ -1,6 +1,5 @@
 package ledger.controller
 
-import javafx.event.ActionEvent
 import javafx.fxml.Initializable
 import javafx.scene.control.*
 import javafx.scene.layout.AnchorPane
@@ -40,13 +39,16 @@ class Controller implements Initializable {
             e.printStackTrace()
         }
 
+        displayBankBalance()
+    }
+
+    void displayBankBalance() {
         String balance = data.getBalance("Bank")
         NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.US)
 
         displayBalance.setText nf.format(Double.parseDouble(balance))
     }
-
-    /**
+/**
      * Adds all input fields into the database
      * @param actionEvent
      */
@@ -96,6 +98,8 @@ class Controller implements Initializable {
         if(!from_account.isVisible()){
             from_account.setVisible(true)
         }
+
+        displayBankBalance()
     }
 
     /**
@@ -103,8 +107,8 @@ class Controller implements Initializable {
      *  to database
      * @param actionEvent
      */
-    void initialBalance(ActionEvent actionEvent) {
-        clearAll(actionEvent)
+    void initialBalance() {
+        clearAll()
         from_account.setPromptText("Account")
         to_account.setVisible(false)
         notes.setText("Initial Balance")
@@ -115,8 +119,8 @@ class Controller implements Initializable {
      * Retrieves current account balance from database
      * @param actionEvent
      */
-    void accountBalance(ActionEvent actionEvent) {
-        clearAll(actionEvent)
+    void accountBalance() {
+        clearAll()
 
         date.setVisible(false)
         to_account.setVisible(false)
